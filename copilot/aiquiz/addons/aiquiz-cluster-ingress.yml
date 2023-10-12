@@ -1,0 +1,24 @@
+Parameters:
+  App:
+    Type: String
+    Description: Your application's name.
+  Env:
+    Type: String
+    Description: The environment name your service, job, or workflow is being deployed to.
+  Name:
+    Type: String
+    Description: Your workload's name.
+  ServiceSecurityGroupId:
+    Type: String
+    Description: The security group associated with the VPC connector.
+Resources:
+  aiquizclusterClusterSecurityGroupIngressFromWorkload:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      Description: !Sub Ingress from workload ${Name}.
+      ToPort: 5432
+      FromPort: 5432
+      GroupId:
+        Fn::ImportValue: !Sub "${App}-${Env}-aiquizclusterDBClusterSecurityGroup"
+      IpProtocol: tcp
+      SourceSecurityGroupId: !Ref ServiceSecurityGroupId
