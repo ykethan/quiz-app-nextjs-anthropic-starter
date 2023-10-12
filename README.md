@@ -1,4 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### A starter AI quiz app with NextJS and Anthropic Claude
+
+## Resources
+
+NextJS
+Anthropic Claude 
+Lucia Auth - GitHub login
+shadcn-ui
+AWS copliot - AppRunner, storage(Aurora Serverless v2 cluster), secrets as SSM parameters, VPC
+
+## Branches
+
+main - Auth uses better-sqlite3 adapter to maintain session information
+rds-branch - Auth uses Aurora Serverless v2 cluster to maintain session information
+
+
+## Breakdown
+
+
+
 
 ## Getting Started
 
