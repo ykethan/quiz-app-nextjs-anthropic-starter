@@ -9,9 +9,9 @@
 
 ## Branches
 
-- main - Auth uses better-sqlite3 adapter to maintain session information
-- rds-branch - Auth uses Aurora Serverless v2 cluster to maintain session information
-
+- main - Auth uses better-sqlite3 adapter to maintain session information, calls Anthropic AI claude v1 using API key
+- rds-branch - Auth uses Aurora Serverless v2 cluster to maintain session information, calls Anthropic AI claude v1 using API key
+- bedrock-branch - Auth uses Aurora Serverless v2 cluster to maintain session information, calls Anthropic AI claude v2 using AWS bedrock
 
 ## Architecture
 
