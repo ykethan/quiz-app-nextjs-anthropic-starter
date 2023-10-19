@@ -42,7 +42,7 @@ const Page = async () => {
             </MenubarContent>
           </MenubarMenu>
           <MenubarMenu>
-            <Link href="/writing">
+            <Link href="/quiz">
               <span className="cursor-pointer text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl text-gray-700 hover:text-gray-900">
                 Quiz
               </span>

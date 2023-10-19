@@ -21,7 +21,6 @@ export default function WritingPage() {
         router.push("/login");
       }
     };
-
     checkSession();
   }, [router]);
 
@@ -35,7 +34,7 @@ export default function WritingPage() {
   const generateQuestion = async () => {
     try {
       setLoadingGenerate(true);
-      const response = await fetch("/writing/completion", {
+      const response = await fetch("/quiz/writing", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,15 +44,10 @@ export default function WritingPage() {
         }),
       });
 
-      try {
-        const responseData = await response.json();
-
-        setCurrentQuestion(responseData.completion); // Set currentQuestion to the newly generated question
-        setUserInput("");
-        setSuggestedAnswer("");
-      } catch (error) {
-        console.error("Error parsing JSON response:", error);
-      }
+      const responseData = await response.json();
+      setCurrentQuestion(responseData.completion);
+      setUserInput("");
+      setSuggestedAnswer("");
     } catch (error) {
       console.error("Error during the question generation:", error);
     } finally {
@@ -62,11 +56,9 @@ export default function WritingPage() {
   };
 
   const validateUserInput = async () => {
-    console.log(userInput);
     try {
       setLoadingValidate(true);
-      const trimmedInput = userInput.trim();
-      const response = await fetch("/writing/completion", {
+      const response = await fetch("/quiz/writing", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +66,7 @@ export default function WritingPage() {
         body: JSON.stringify({
           action: "validateAnswer",
           question: currentQuestion,
-          answer: trimmedInput.trim(),
+          answer: userInput.trim(),
         }),
       });
 
@@ -93,7 +85,6 @@ export default function WritingPage() {
       setLoadingValidate(false);
     }
   };
-
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* NavBar at the top */}
